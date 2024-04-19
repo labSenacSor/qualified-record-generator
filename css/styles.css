@@ -1,0 +1,82 @@
+html {
+    font-size: 16px; /* Tamanho base da fonte */
+}
+
+body {
+    background-color: #0d4c92; /* Azul escuro */
+    color: #fff; /* Texto branco para melhor contraste */
+    }
+    
+    h1, h2, h3 {
+    color: #ef9d32; /* Laranja para títulos */
+    }
+
+    h1 {
+        font-size: 2rem; /* 32px (base de 16px multiplicada por 2) */
+    }
+    p {
+        font-size: 1rem; /* 16px (base de 16px) */
+    }
+
+           
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    padding: 10px;
+}
+.grid-item {
+    padding: 10px;
+    font-size: 20px;
+    text-align: left;
+}
+
+/*textarea {
+    width: 100%;
+    height: 100%;
+}*/
+
+textarea {
+    width: 100%;    
+    height: auto;
+}
+
+
+@media screen and (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: auto;
+    }
+}
+
+/* Botão com fundo laranja e texto branco, sombra e bordas arredondadas */
+button[onclick="generateFeedback()"] {
+background-color: #ff9900;
+color: #fff;
+text-shadow: 1px 1px 2px #333;
+border: 2px solid #fff;
+border-radius: 5px;
+padding: 10px 20px;
+cursor: pointer;
+}
+
+/* Botão com fundo laranja e texto branco, sombra e bordas arredondadas */
+button[onclick="copyToClipboard()"] {
+/*background-color: #ff9900;*/
+background-color: #007bff;  
+color: #fff;
+text-shadow: 1px 1px 2px #333;
+border: 2px solid #fff;
+border-radius: 5px;
+padding: 10px 20px;
+cursor: pointer;
+}
+
+/* Botão com fundo laranja e texto branco, sombra e bordas arredondadas */
+button[onclick="clearSelection()"] {
+background-color: #007bff;
+color: #fff;
+text-shadow: 1px 1px 2px #333;
+border: 2px solid #fff;
+border-radius: 5px;
+padding: 10px 20px;
+cursor: pointer;
+}
