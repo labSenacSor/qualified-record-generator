@@ -46,6 +46,9 @@ function Listener() {
         
             var paragraph = document.createElement('p');
             paragraph.innerHTML = `**${tiporegistro}**`; // Interpolação de string
+
+            alert('Revise o texto gerado e acrescente quaisquer informações que julgar necessário para obter um registro que gere subsídios ao acompanhamento do processo educacional.');
+
         }
 
         function clearSelection() {
