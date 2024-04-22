@@ -103,7 +103,7 @@ function Listener() {
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         var checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
         if (!checkedOne) {
-            alert('Por favor, selecione pelo menos um checkbox nos itens de feedback.');
+            alert('Por favor, selecione pelo menos um checkbox nos itens de registro.');
             return false;
         }
         return true;
@@ -119,6 +119,6 @@ function Listener() {
             i++;        
         }
 
-        if (!formValid) alert("Selecione pelo menos um item para gerar o Feedback!");
+        if (!formValid) alert("Selecione pelo menos um item para gerar o registro!");
         return formValid;
     }
