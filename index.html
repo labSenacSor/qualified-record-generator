@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Adilson Andrade">
-	<meta name="description" content="Gerador de registros qualificados para sistema educacional">
+	<meta name="description" content="Gerador de registros para sistema educacional">
 	<meta name="keywords" content="educacional, feedback, registros, qualificados">
 	<meta name="copyright" content="© 2024 Senac">
 	<meta name="rating" content="general">
-  <title>Gerador de Registros Qualificados</title>
+  <title>Gerador de Registros</title>
   <link rel="stylesheet" type="text/css" href="css\styles.css" media="screen" />
   <link rel="shortcut icon" href="image\favicon.ico" />    
   <script type="text/javascript" src="js\script.js"></script>
 </head>
   <body onload="Listener();">  
-    <img  src="image\banner.png" alt="LABSenacSOR">
     <div class="grid-container">
         <div class="grid-item">
+          <img  src="image\banner.png" alt="LABSenacSOR">                
             <form id="formDiscente">
                 <p>
                     <label>Selecione o perfil discente:</label><br>
@@ -38,25 +37,19 @@
                     <label>Conversou pessoalmente?</label><br>
                     <label>
                       <input type="radio" name="tipoRegistro" value="<h3>AÇÕES DE FEEDBACK</h3> 
-                      O feedback é uma devolutiva ao estudante sobre o resultado de uma avaliação.<br>
-                      O registro da devolutiva deve evidenciar os avanços e desafios do estudante no seu processo de aprendizagem.<br> 
-                      Não há limite para essa ação, sendo possível realizar quantos registros forem necessários ao longo da unidade curricular.
+                      O feedback é uma devolutiva ao estudante sobre o resultado de uma avaliação, esse registro deve evidenciar os avanços e desafios do estudante no seu processo de aprendizagem.<br> 
+                      É possível realizar quantos registros de feedback forem necessários ao longo da unidade curricular.
                       " required>
                       Sim
                     </label>
                     <label>
                       <input type="radio" name="tipoRegistro" value="<h3>OBSERVAÇÕES DO ALUNO</h3> 
-                      O campo Observações do aluno é opcional e auxilia os docentes e as equipes técnicas e de secretaria a acompanharem e entenderem o processo educacional.<br>
-                      Neste campo procure registrar informações adicionais ao processo de aprendizagem do estudante.<br>
-                      Evite registros sobre atrasos ou saídas antecipadas <b>SEM ESCLARECER</b> o que foi perdido ou impossível observar pela ausência do aluno.">
+                      O campo Observações do aluno auxilia os docentes e as equipes técnicas e de secretaria a acompanharem e entenderem o processo educacional.<br>
+                      Registre informações adicionais ao processo de aprendizagem do estudante, você sempre <b>DEVE ESCLARECER</b> o que foi perdido ou comprometido ao registrar suas observações.">
                       Não
                     </label>
                   </p>            
-            </form>            
-<!--
-        </div>        
-        <div class="grid-item">
--->            
+            </form>                   
             <label>Realizar registro sobre:</label><hr>            
             <form id="itens">
                 <input type="checkbox" id="item1" name="item1" value="sobre a necessidade de FREQUÊNCIA nas atividades conforme cronograma:  Orientação que A frequência mínima de 75% é obrigatória para aprovação e é apurada na carga horária total ministrada em cada componente curricular., conforme Título VI - Da Avaliação do Estudante, Capítulo II – dos Critérios e Formas de Avaliação, Seção I – Da Frequência - Artigo 55 do Regimento Escolar Vigente.">
@@ -89,13 +82,8 @@
             </br>
             <button onclick="clearSelection()">Limpar Seleção</button>
             
-            <button onclick="generateFeedback()">Gerar Feedback</button>            
-<!--
-        <div class="grid-item">
-            <button onclick="generateFeedback()">Gerar Feedback</button>
-        </div>
-
--->        </div>        
+            <button onclick="generateFeedback()">Gerar Registro</button>            
+        </div>        
         <div class="grid-item">
             <p id="tipoRegistro"></p>
             <textarea id="feedback" rows="20"></textarea>
@@ -103,8 +91,4 @@
         </div>
     </div>
 </body>
-<!--
-https://htmlreference.io/forms/
-https://opensource.locaweb.com.br/locawebstyle-v2/manual/formularios/mascaras-forms/
--->
 </html>

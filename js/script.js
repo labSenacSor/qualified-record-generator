@@ -1,3 +1,5 @@
+var originalFeedback = "";
+
 function Listener() {
         // Selecione o elemento radio button
         const radioButtons = document.querySelectorAll('input[name="tipoRegistro"]');
@@ -14,7 +16,7 @@ function Listener() {
                 // Atualize o conteúdo da label
                 // tipoRegistroLabel.textContent = selectedValue;
                 tipoRegistroLabel.innerHTML = selectedValue;
-                generateFeedback();
+                //generateFeedback();
             });
         });
 }
@@ -42,31 +44,61 @@ function Listener() {
                 }
             }
         
+            originalFeedback = feedback; // Armazene o feedback originalmente gerado            
             document.getElementById("feedback").value = feedback;
         
             var paragraph = document.createElement('p');
             paragraph.innerHTML = `**${tiporegistro}**`; // Interpolação de string
 
-            alert('Revise o texto gerado e acrescente quaisquer informações que julgar necessário para obter um registro que gere subsídios ao acompanhamento do processo educacional.');
-
+            alert('O registro é um documento formal e possui as seguintes características:\n' +
+            '- é um registro institucional;\n' +
+            '- guarda a memória de uma trajetória formativa;\n' +
+            '- é uma fonte importantíssima de informações, tanto para o aluno como para o docente;\n' +
+            '- é um instrumento de comunicação, entretanto não tem a finalidade de registrar opinião pessoal ou expressar um julgamento sobre o aluno que não contribuem para o processo formativo;');
         }
 
         function clearSelection() {
-            var form = document.getElementById("itens");
-            for (var i = 0; i < form.elements.length; i++) {
-                form.elements[i].checked = false;
+            var formItens = document.getElementById("itens");
+            var formDiscente = document.getElementById("formDiscente");
+            var formTipoRegistro = document.getElementById("formTipoRegistro");
+        
+            // Limpar seleção em formItens
+            for (var i = 0; i < formItens.elements.length; i++) {
+                formItens.elements[i].checked = false;
             }
+        
+            // Limpar seleção em formDiscente
+            for (var i = 0; i < formDiscente.elements.length; i++) {
+                formDiscente.elements[i].checked = false;
+            }
+        
+            // Limpar seleção em formTipoRegistro
+            for (var i = 0; i < formTipoRegistro.elements.length; i++) {
+                formTipoRegistro.elements[i].checked = false;
+            }
+        
             document.getElementById("feedback").value = "";
         }
-
+        
         function copyToClipboard() {
             var textarea = document.getElementById("feedback");
+        
+            if (textarea.value === originalFeedback) {
+                alert('ATUALIZE O TEXTO SUGERIDO, com o objetivo de:\n' +
+                '----------------------------------------------------------\n' +
+                'ESCLARECER: diga exatamente os aspectos mais relevantes do processo de avaliação. \n' +
+                'VALORIZAR: a valorização não pode ser um discurso vazio e subjetivo, deve enfocar os aspectos mais relevantes do desenvolvimento do aluno para que (ele) perceba como evolui dentro do processo educacional. \n' +
+                'SUGERIR: os aspectos que podem ser aprimorados e também as ações que contribuirão para o desenvolvimento do aluno. \n' +
+                'QUESTIONAR: faça perguntas que o leve a identificar algumas dificuldades ou aspectos percebidos durante o processo, seja nas atividades das situações de aprendizagem seja em alguma situação de avaliação específica.');
+                textarea.select();                
+                return false;
+            }
+        
             textarea.select();
             document.execCommand("copy");
             alert('Pressione CTRL V no Sistema Educacional ');
             return false;            
         }
-
 
     function validateFormDiscente() {
         var radios = document.getElementsByName('discente');
@@ -99,7 +131,6 @@ function Listener() {
     
 
     function validateFormItens() {    
-//        document.getElementById('itens').addEventListener('submit', function(e) {
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         var checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
         if (!checkedOne) {
