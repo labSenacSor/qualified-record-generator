@@ -3,7 +3,7 @@ var originalFeedback = "";
 function Listener() {
         var navegador = navigator.userAgent;
         if (navegador.indexOf("Edg") == -1) {
-            alert("Recomenda-se a utilização do Microsoft EDGE para uma melhor experiência dos recursos de IA via Copilot.");
+            alert("Recomenda-se a utilização do navegador Microsoft EDGE para uma melhor experiência dos recursos de IA via Copilot.");
         }
 
         // Selecione o elemento radio button
