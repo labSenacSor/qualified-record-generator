@@ -56,6 +56,17 @@ textarea {
     height: auto;
 }
 
+.logo {
+    width: 200px; /* ou qualquer tamanho que você deseja */
+    height: auto; /* mantém a proporção da imagem */
+    margin-top: 20px; /* adiciona espaço acima da imagem */
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 @media screen and (max-width: 600px) {
     .grid-container {
