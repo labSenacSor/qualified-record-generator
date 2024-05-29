@@ -3,7 +3,7 @@ var originalFeedback = "";
 function Listener() {
         var navegador = navigator.userAgent;
         if (navegador.indexOf("Edg") == -1) {
-            alert("Recomenda-se a utilização do navegador Microsoft EDGE para uma melhor experiência dos recursos de IA via Copilot.");
+            Swal.fire("Recomenda-se a utilização do navegador Microsoft EDGE para uma melhor experiência dos recursos de IA via Copilot.");            
         }
 
         // Selecione o elemento radio button
@@ -54,12 +54,26 @@ function Listener() {
         
             var paragraph = document.createElement('p');
             paragraph.innerHTML = `**${tiporegistro}**`; // Interpolação de string
+            Swal.fire({
+                title: "<strong>Sobre o registro</strong>",
+                icon: "info",
+                html: `
+                O registro é um documento formal e possui as seguintes características:
+                <li>É um registro institucional;</ol>
+                <li>Guarda a memória de uma trajetória formativa;</li>
+                <li>É uma fonte importantíssima de informações, tanto para o aluno como para o docente;</li>
+                <li>É um instrumento de comunicação, entretanto não tem a finalidade de registrar opinião pessoal ou expressar um julgamento sobre o aluno que não contribuem para o processo formativo;</li>
+                `,
+                showCloseButton: false,
+                showCancelButton: false,
+                focusConfirm: false,
+                confirmButtonText: `Entendi`,
+                confirmButtonAriaLabel: "",
+                cancelButtonText: ``,
+                cancelButtonAriaLabel: ""
+              });
 
-            alert('O registro é um documento formal e possui as seguintes características:\n' +
-            '- é um registro institucional;\n' +
-            '- guarda a memória de uma trajetória formativa;\n' +
-            '- é uma fonte importantíssima de informações, tanto para o aluno como para o docente;\n' +
-            '- é um instrumento de comunicação, entretanto não tem a finalidade de registrar opinião pessoal ou expressar um julgamento sobre o aluno que não contribuem para o processo formativo;');
+
         }
 
         function clearSelection() {
@@ -89,19 +103,32 @@ function Listener() {
             var textarea = document.getElementById("feedback");
         
             if (textarea.value === originalFeedback) {
-                alert('ATUALIZE O TEXTO SUGERIDO, com o objetivo de:\n' +
-                '----------------------------------------------------------\n' +
-                'ESCLARECER: diga exatamente os aspectos mais relevantes do processo de avaliação. \n' +
-                'VALORIZAR: a valorização não pode ser um discurso vazio e subjetivo, deve enfocar os aspectos mais relevantes do desenvolvimento do aluno para que (ele) perceba como evolui dentro do processo educacional. \n' +
-                'SUGERIR: os aspectos que podem ser aprimorados e também as ações que contribuirão para o desenvolvimento do aluno. \n' +
-                'QUESTIONAR: faça perguntas que o leve a identificar algumas dificuldades ou aspectos percebidos durante o processo, seja nas atividades das situações de aprendizagem seja em alguma situação de avaliação específica.');
+                Swal.fire({
+                    title: "<strong>Atualize o texto sugerido</strong>",
+                    html: `
+                    Com o objetivo de:
+                    <li><b>ESCLARECER:</b> diga exatamente os aspectos mais relevantes do processo de avaliação.</ol>
+                    <li><b>VALORIZAR:</b> a valorização não pode ser um discurso vazio e subjetivo, deve enfocar os aspectos mais relevantes do desenvolvimento do aluno para que (ele) perceba como evolui dentro do processo educacional.</li>
+                    <li><b>SUGERIR:</b> os aspectos que podem ser aprimorados e também as ações que contribuirão para o desenvolvimento do aluno.</li>
+                    <li><b>QUESTIONAR:</b> faça perguntas que o leve a identificar algumas dificuldades ou aspectos percebidos durante o processo, seja nas atividades das situações de aprendizagem seja em alguma situação de avaliação específica.</li>
+                    `,
+                    confirmButtonText: 'Entendi'
+                  });
+
                 textarea.select();                
                 return false;
             }
+            
         
             textarea.select();
             document.execCommand("copy");
-            alert('Pressione CTRL V no Sistema Educacional ');
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Pressione CTRL V no Sistema Educacional.",
+                showConfirmButton: false,
+                timer: 2500
+              });      
             return false;            
         }
 
@@ -115,8 +142,9 @@ function Listener() {
             i++;        
         }
 
-        if (!formValid) alert("Selecione o perfil discente!");
-        return formValid;
+        if (!formValid) 
+            Swal.fire("Selecione o perfil discente!");
+                return formValid;
     }
 
     function validateFormTipoRegistro() {
@@ -129,7 +157,7 @@ function Listener() {
             i++;        
         }
 
-        if (!formValid) alert("Informe se você conversou pessoalmente com (o/a) Estudante.");
+        if (!formValid) Swal.fire("Informe se você conversou pessoalmente com (o/a) estudante.");
         return formValid;
     }
 
@@ -139,7 +167,7 @@ function Listener() {
         var checkboxes = document.querySelectorAll('input[type="checkbox"]');
         var checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
         if (!checkedOne) {
-            alert('Por favor, selecione pelo menos um checkbox nos itens de registro.');
+            Swal.fire("Por favor, selecione pelo menos um checkbox nos itens de registro.");            
             return false;
         }
         return true;
@@ -155,6 +183,6 @@ function Listener() {
             i++;        
         }
 
-        if (!formValid) alert("Selecione pelo menos um item para gerar o registro!");
+        if (!formValid) Swal.fire("Selecione pelo menos um item para gerar o registro!");
         return formValid;
     }

@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 html {
     font-size: 20px; /* Tamanho base da fonte */
+    font-family: 'Montserrat', sans-serif; /* Fonte padrão */
 }
 
 body {
@@ -26,8 +29,17 @@ body {
         margin-right: auto
     }
 
+    .banner-text {
+        /* Definir a fonte e o tamanho do texto */
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem; /* 32px */
+        text-align: center;
+        color: #fff; /* Texto branco para melhor contraste */
+        background-color: #0d4c92; /* Fundo azul */
+        padding: 10px; /* Espaçamento interno para o texto */
+    }
     
-           
+                   
 .grid-container {
     display: grid;
     grid-template-columns: 2fr 1.5fr;
