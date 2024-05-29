@@ -1,10 +1,12 @@
 var originalFeedback = "";
 
-function Listener() {
+function Listener() {  
         var navegador = navigator.userAgent;
         if (navegador.indexOf("Edg") == -1) {
             Swal.fire("Recomenda-se a utilização do navegador Microsoft EDGE para uma melhor experiência dos recursos de IA via Copilot.");            
         }
+
+        let selectionCount = 0;
 
         // Selecione o elemento radio button
         const radioButtons = document.querySelectorAll('input[name="tipoRegistro"]');
@@ -22,6 +24,9 @@ function Listener() {
                 // tipoRegistroLabel.textContent = selectedValue;
                 tipoRegistroLabel.innerHTML = selectedValue;
                 //generateFeedback();
+
+                let selectionCount = 0;                
+
             });
         });
 }
@@ -118,19 +123,44 @@ function Listener() {
                 textarea.select();                
                 return false;
             }
-            
-        
+                  
             textarea.select();
             document.execCommand("copy");
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Pressione CTRL V no Sistema Educacional.",
-                showConfirmButton: false,
-                timer: 2500
-              });      
+
+        // Chama a função para exibir o alerta com base na seleção atual
+        showAlertBasedOnSelection();
+
             return false;            
         }
+
+        function showAlertBasedOnSelection() {
+            // Seleciona todos os botões de rádio
+            let radioButtons = document.getElementsByName('tipoRegistro');
+        
+            // Verifica cada botão de rádio
+            for(let i = 0; i < radioButtons.length; i++) {
+                if(radioButtons[i].checked) {
+                    // Verifica qual botão de rádio está selecionado
+                    if(radioButtons[i].value.includes('AÇÕES DE FEEDBACK')) {
+                        Swal.fire({
+                            title: "",
+                            text: "Pressione CTRL + V no Sistema Educacional para registrar seu FEEDBACK. \n Siga as orientações apresentadas acima.",
+                            imageUrl: "image/feedback.png",
+                            imageAlt: "Feedback ao Aluno"
+                        });
+                    } else if(radioButtons[i].value.includes('OBSERVAÇÕES DO ALUNO')) {
+                        Swal.fire({
+                            title: "",
+                            text: "Pressione CTRL + V no Sistema Educacional para registrar sua OBSERVAÇÃO. \n Siga as as orientações apresentadas acima.",
+                            imageUrl: "image/observacoes.png",
+                            imageAlt: "Observações do Aluno"
+                        });
+                    }
+                    break; // Sai do loop assim que encontrar a seleção atual
+                }
+            }
+        }
+
 
     function validateFormDiscente() {
         var radios = document.getElementsByName('discente');
